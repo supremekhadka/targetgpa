@@ -3,12 +3,15 @@ import { useState } from "react";
 import Image from "next/image";
 import logo from "@/public/assets/logo.png";
 
-export default function Home() {
-  const [semesters, setSemesters] = useState(Array(8).fill(""));
-  const [targetGPA, setTargetGPA] = useState("");
-  const [result, setResult] = useState(null);
+type SemesterGPA = string;
+type TargetGPA = string;
 
-  const handleSemesterChange = (index, value) => {
+export default function Home() {
+  const [semesters, setSemesters] = useState<SemesterGPA[]>(Array(8).fill(""));
+  const [targetGPA, setTargetGPA] = useState<TargetGPA>("");
+  const [result, setResult] = useState<string | null>(null);
+
+  const handleSemesterChange = (index: number, value: SemesterGPA) => {
     const updatedSemesters = [...semesters];
     updatedSemesters[index] = value;
     setSemesters(updatedSemesters);
@@ -28,7 +31,7 @@ export default function Home() {
     const currentGPA =
       completedSemesters.reduce((acc, gpa) => acc + gpa, 0) / nCompleted;
     const remainingGPA =
-      (targetGPA * 8 - currentGPA * nCompleted) / (8 - nCompleted);
+      (parseFloat(targetGPA) * 8 - currentGPA * nCompleted) / (8 - nCompleted);
 
     if (remainingGPA > 4 || remainingGPA < 0) {
       setResult(
@@ -94,7 +97,7 @@ export default function Home() {
         </button>
 
         {result && (
-          <div className="mt-6 bg-white  p-4 rounded shadow-md w-[30rem] text-gray-950 ">
+          <div className="mt-6 bg-white p-4 rounded shadow-md w-[30rem] text-gray-950 ">
             <h3 className="text-lg font-medium">{result}</h3>
           </div>
         )}
