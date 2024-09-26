@@ -97,7 +97,7 @@ export default function Home() {
         </button>
 
         {result && (
-          <div className="mt-6 bg-white p-4 rounded shadow-md w-max text-gray-950 ">
+          <div className="mt-6 bg-white p-4 rounded shadow-md w-full text-gray-950 ">
             <h3 className="text-lg font-medium">{result}</h3>
           </div>
         )}
