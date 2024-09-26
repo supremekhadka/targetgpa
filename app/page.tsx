@@ -69,7 +69,7 @@ export default function Home() {
                 max="4"
                 step={0.01}
                 onChange={(e) => handleSemesterChange(index, e.target.value)}
-                className="border border-gray-300 p-2 rounded w-full appearance-none dark:text-gray-950 text-gray-50"
+                className="border border-gray-300 p-2 rounded w-full appearance-none text-gray-950 "
               />
             </div>
           ))}
@@ -85,7 +85,7 @@ export default function Home() {
             min="0"
             max="4"
             onChange={(e) => setTargetGPA(e.target.value)}
-            className="border border-gray-300 p-2 rounded w-full dark:text-gray-950 text-gray-50"
+            className="border border-gray-300 p-2 rounded w-full text-gray-950 "
           />
         </div>
 
